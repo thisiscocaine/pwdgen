@@ -3,55 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secure Password Generator</title>
+    <meta name="description" content="Generate highly secure passwords with custom options. Fast, reliable, and free!">
+    <meta name="keywords" content="Secure Password Generator, Strong Passwords, Online Security, AriskSec, password generator, strong password, Strong Random Password Generator, password manager, password security, generate passwords, best password generator, create strong passwords, online password maker, password protection">
+    <meta name="author" content="AriskSec">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Secure Password Generator - AriskSec">
+    <meta property="og:description" content="Generate highly secure passwords with custom options. Fast, reliable, and free!">
+    <meta property="og:image" content="https://cdn.aryanaryal.com.np/626c6f672d617279616e/70686f746f73/6c6f676f73/favicon.png">
+    <meta property="og:url" content="https://pwd.aryanaryal.com.np/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Secure Password Generator - AriskSec">
+    <meta name="twitter:description" content="Generate highly secure passwords with custom options. Fast, reliable, and free!">
+    <meta name="twitter:image" content="https://cdn.aryanaryal.com.np/626c6f672d617279616e/70686f746f73/6c6f676f73/favicon.png">
+    <link rel="canonical" href="https://pwd.aryanaryal.com.np/">
+    <link rel="icon" type="image/x-icon" href="https://cdn.aryanaryal.com.np/626c6f672d617279616e/70686f746f73/6c6f676f73/favicon.png" />
+  	 
+     <!-- Structured Data (Schema Markup) -->
+     <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "name": "Secure Password Generator - AriskSec",
+          "url": "https://pwd.aryanaryal.com.np/",
+          "description": "Generate highly secure passwords with custom options. Fast, reliable, and free!",
+          "author": {
+            "@type": "Organization",
+            "name": "AriskSec"
+          },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://pwd.aryanaryal.com.np/",
+            "query-input": "required name=search_term_string"
+          },
+          "isPartOf": {
+            "@type": "Website",
+            "name": "AriskSec Security Tools",
+            "url": "https://aryanaryal.com.np/"
+          }
+        }
+        </script>
+
+    <title>Secure Password Generator - AriskSec</title>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WPMJT9SM');</script>
+    <!-- End Google Tag Manager -->
+
+
     <style>
         body { 
-            font-family: Arial, sans-serif; 
+            font-family: 'Poppins', sans-serif; 
             text-align: center; 
-            padding: 20px; 
-            background-color: lightgrey; 
-            color: black;
+            background-color: #d3d3d3;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
         }
-        h2 {
-            background-color: darkred;
+        .container {
+            background: #121212;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            max-width: 400px;
+            width: 90%;
+            text-align: left;
+        }
+        .header {
+            background: red;
+            padding: 15px;
+            text-align: center;
             color: white;
-            padding: 10px;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            font-size: 22px;
+            font-weight: bold;
+            border-radius: 10px 10px 0 0;
         }
         input, button { 
-            margin: 10px; 
-            padding: 10px; 
-            font-size: 16px; 
+            margin: 10px 0; 
+            padding: 12px; 
+            font-size: 16px;
+            width: 100%;
+            border-radius: 5px;
+            border: none;
+            display: block;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        input {
+            background: #333;
+            color: #fff;
+            text-align: center;
+        }
+        #passwordLength, #password {
+            width: calc(100% - 24px);
+            max-width: 100%;
+        }
+        button {
+            background: red;
+            color: #fff;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+        button:hover {
+            background: darkred;
         }
         label {
-            text-align: justify;
-            display: block;
+    display: flex;
+    align-items: center;
+    text-align: justify;
+    font-size: 14px;
+    margin: 5px 0;
+    color: white;
+}
+
+label input {
+    margin-right: 10px;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+        .footer {
+            margin-top: 10px;
+            font-size: 12px;
+            text-align: center;
+            color: #ccc;
         }
-        footer {
-            margin-top: 20px;
-            font-size: 14px;
+        @media (max-width: 480px) {
+            .container {
+                width: 95%;
+                padding: 15px;
+            }
+            .header {
+                font-size: 18px;
+            }
+            input, button {
+                padding: 10px;
+                font-size: 14px;
+            }
         }
     </style>
-</head>
-<body>
-    <h2>Secure Password Generator</h2>
-    <label for="passwordLength">Password Length:</label>
-    <input type="number" id="passwordLength" value="16" min="16" max="128">
-    <br>
-    <label><input type="checkbox" id="includeNumbers" checked> Include Numbers (0-9)</label>
-    <label><input type="checkbox" id="includeLowercase" checked> Include Lowercase (a-z)</label>
-    <label><input type="checkbox" id="includeUppercase" checked> Include Uppercase (A-Z)</label>
-    <label><input type="checkbox" id="includeSymbols" checked> Include Symbols (!@#$%^&*...)</label>
-    <label><input type="checkbox" id="beginWithLetter" checked> Begin with a Letter</label>
-    <br>
-    <button onclick="generatePassword()">Generate Password</button>
-    <input type="text" id="password" readonly>
-    <button onclick="copyPassword()">Copy</button>
-    
-    <footer>
-        &copy; <span id="year"></span> Powered by <a href="https://aryanaryal.com.np/" target="_blank">arisksec</a>
-    </footer>
-
     <script>
         function generatePassword() {
             const length = document.getElementById('passwordLength').value;
@@ -91,7 +189,30 @@
             alert("Password copied to clipboard!");
         }
         
-        document.getElementById('year').textContent = new Date().getFullYear();
+        document.addEventListener("DOMContentLoaded", () => {
+            document.getElementById('year').textContent = new Date().getFullYear();
+        });
     </script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">Secure Password Generator</div>
+        <label for="passwordLength">Password Length:</label>
+        <input type="number" id="passwordLength" value="16" min="16" max="128">
+        <label><input type="checkbox" id="includeNumbers" checked"> Include Numbers (0-9)</label>
+        <label><input type="checkbox" id="includeLowercase" checked> Include Lowercase (a-z)</label>
+        <label><input type="checkbox" id="includeUppercase" checked> Include Uppercase (A-Z)</label>
+        <label><input type="checkbox" id="includeSymbols" checked> Include Symbols (!@#$%^&*)</label>
+        <label><input type="checkbox" id="beginWithLetter" checked> Begin with a Letter</label>
+        <button onclick="generatePassword()">Generate Password</button>
+        <input type="text" id="password" readonly>
+        <button onclick="copyPassword()">Copy</button>
+        <div class="footer">&copy; <span id="year"></span> Powered by <a href="https://aryanaryal.com.np/" target="_blank" style="color: white;">arisksec</a></div>
+    </div>
+
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WPMJT9SM"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 </body>
 </html>
