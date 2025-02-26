@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-        <!-- Google Tag Manager -->
+    <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
         j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -10,9 +9,6 @@
     })(window,document,'script','dataLayer','GTM-WPMJT9SM');</script>
     <!-- End Google Tag Manager -->
 
-
-    
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Generate highly secure passwords with custom options. Fast, reliable, and free!">
@@ -30,44 +26,18 @@
     <meta name="google-site-verification" content="CeBa50H0CJoDf85vK9KrCwXnKuYMja8Dn9kIkpLAlok" />
     <link rel="canonical" href="https://pwd.aryanaryal.com.np/">
     <link rel="icon" type="image/x-icon" href="https://cdn.aryanaryal.com.np/626c6f672d617279616e/70686f746f73/6c6f676f73/favicon.png" />
-  	 
-     <!-- Structured Data (Schema Markup) -->
-     <script type="application/ld+json">
-        {
-          "@context": "https://schema.org",
-          "@type": "WebPage",
-          "name": "Secure Password Generator - AriskSec",
-          "url": "https://pwd.aryanaryal.com.np/",
-          "description": "Generate highly secure passwords with custom options. Fast, reliable, and free!",
-          "author": {
-            "@type": "Organization",
-            "name": "AriskSec"
-          },
-          "potentialAction": {
-            "@type": "SearchAction",
-            "target": "https://pwd.aryanaryal.com.np/",
-            "query-input": "required name=search_term_string"
-          },
-          "isPartOf": {
-            "@type": "Website",
-            "name": "AriskSec Security Tools",
-            "url": "https://aryanaryal.com.np/"
-          }
-        }
-        </script>
 
     <title>Secure Password Generator - AriskSec</title>
 
-    
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-NWHBE2GVKH"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NWHBE2GVKH"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-  gtag('config', 'G-NWHBE2GVKH');
-</script>
+      gtag('config', 'G-NWHBE2GVKH');
+    </script>
 
     <style>
         body { 
@@ -92,7 +62,7 @@
             text-align: left;
         }
         .header {
-            background: red;
+            background: rgb(131 255 0 / 18%);
             padding: 15px;
             text-align: center;
             color: white;
@@ -120,7 +90,7 @@
             max-width: 100%;
         }
         button {
-            background: red;
+            background: rgb(131 255 0 / 18%);
             color: #fff;
             cursor: pointer;
             transition: 0.3s;
@@ -130,21 +100,19 @@
             background: darkred;
         }
         label {
-    display: flex;
-    align-items: center;
-    text-align: justify;
-    font-size: 14px;
-    margin: 5px 0;
-    color: white;
-}
-
-label input {
-    margin-right: 10px;
-    width: 16px;
-    height: 16px;
-    cursor: pointer;
-}
-
+            display: flex;
+            align-items: center;
+            text-align: justify;
+            font-size: 14px;
+            margin: 5px 0;
+            color: white;
+        }
+        label input {
+            margin-right: 10px;
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+        }
         .footer {
             margin-top: 10px;
             font-size: 12px;
@@ -164,8 +132,39 @@ label input {
                 font-size: 14px;
             }
         }
+
+        /* Popup Message Styles */
+        /* Popup Message Styles */
+.popup {
+    position: fixed;
+    top: 20px; /* Change from bottom to top */
+    left: 45%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: none;
+    z-index: 1000;
+}
+
     </style>
+
     <script>
+        function showPopup(message) {
+            const popup = document.createElement('div');
+            popup.className = 'popup';
+            popup.textContent = message;
+            document.body.appendChild(popup);
+
+            popup.style.display = 'block';
+
+            setTimeout(() => {
+                popup.style.display = 'none';
+                document.body.removeChild(popup);
+            }, 3000);
+        }
+
         function generatePassword() {
             const length = document.getElementById('passwordLength').value;
             const includeNumbers = document.getElementById('includeNumbers').checked;
@@ -173,49 +172,64 @@ label input {
             const includeUppercase = document.getElementById('includeUppercase').checked;
             const includeSymbols = document.getElementById('includeSymbols').checked;
             const beginWithLetter = document.getElementById('beginWithLetter').checked;
-            
+
+            if (length < 16 || length > 128) {
+                showPopup("Password length should be between 16 and 128 characters.");
+                return;
+            }
+
             let chars = "";
             if (includeUppercase) chars += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             if (includeLowercase) chars += "abcdefghijklmnopqrstuvwxyz";
             if (includeNumbers) chars += "0123456789";
             if (includeSymbols) chars += "!@#$%^&*()-_{}[]/?";
-            
+
             if (chars.length === 0) {
-                alert("Please select at least one character type.");
+                showPopup("Please select at least one character type.");
                 return;
             }
-            
+
             let password = "";
             if (beginWithLetter) {
                 password += "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".charAt(Math.floor(Math.random() * 52));
             }
-            
+
             for (let i = password.length; i < length; i++) {
                 password += chars.charAt(Math.floor(Math.random() * chars.length));
             }
-            
+
             document.getElementById('password').value = password;
         }
-        
-                
-        document.addEventListener("DOMContentLoaded", () => {
-            document.getElementById('year').textContent = new Date().getFullYear();
-        });
+
+        function copyPassword() {
+            const passwordField = document.getElementById('password');
+            
+            if (!passwordField.value.trim()) {
+                showPopup("Password is empty! Generate a password first.");
+                return;
+            }
+
+            try {
+                navigator.clipboard.writeText(passwordField.value);
+                showPopup("Password copied to clipboard!");
+            } catch (err) {
+                showPopup("Failed to copy password.");
+                console.error("Clipboard error: ", err);
+            }
+        }
     </script>
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WPMJT9SM"
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WPMJT9SM"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-
-    
     <div class="container">
         <div class="header">Secure Password Generator</div>
         <label for="passwordLength">Password Length:</label>
         <input type="number" id="passwordLength" value="16" min="16" max="128">
-        <label><input type="checkbox" id="includeNumbers" checked"> Include Numbers (0-9)</label>
+        <label><input type="checkbox" id="includeNumbers" checked> Include Numbers (0-9)</label>
         <label><input type="checkbox" id="includeLowercase" checked> Include Lowercase (a-z)</label>
         <label><input type="checkbox" id="includeUppercase" checked> Include Uppercase (A-Z)</label>
         <label><input type="checkbox" id="includeSymbols" checked> Include Symbols (!@#$%^&*)</label>
@@ -225,7 +239,6 @@ label input {
         <button onclick="copyPassword()">Copy</button>
         <div class="footer">&copy; <span id="year"></span> Powered by <a href="https://aryanaryal.com.np/" target="_blank" style="color: white;">arisksec</a></div>
     </div>
-<script src="https://cdn.aryanaryal.com.np/626c6f672d617279616e/6d61696e/6a73/16234.js"></script>
-    
+    <script src="https://cdn.aryanaryal.com.np/626c6f672d617279616e/6d61696e/6a73/16234.js"></script>
 </body>
 </html>
